@@ -1,0 +1,77 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>タイトル</title>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<script src="/js/node_modules/jquery/dist/jquery.min.js" th:src="@{/js/node_modules/jquery/dist/jquery.min.js}"></script>
+		<script src="/js/node_modules/jqplot/jquery.jqplot.min.js" th:src="@{/js/node_modules/jqplot/jquery.jqplot.min.js}"></script>
+		<link rel="stylesheet" type="text/css" href="/js/node_modules/jqplot/jquery.jqplot.min.css" th:href="@{/js/node_modules/jqplot/jquery.jqplot.min.css}">
+	</head>
+	<body>
+ 		<div id="css-menu">
+    　		～メニュー内容～
+    	</div>
+		<div id="css-contents">
+
+			<table th:if="${amedasHeader!=null}" class="table table-bordered">
+				<thead class="thead-dark">
+					<tr>
+						<th>ID</th>
+						<th>名前</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="amedasData:${amedasHeader.amedasDatas}">
+						<td th:text="${amedasData.id}"></td>
+						<td th:text="${amedasData.dateTime}"></td>
+					</tr>
+				</tbody>
+			</table>
+
+    	</div>
+    	<div id="css-contents">
+			<span>散布図サンプル</span>
+			<div id="jqPlot-sample" style="height: 300px; width: 300px;">
+			</div>
+    	</div>
+    	<div id="css-contents">
+    　			BOX3
+    	</div>
+  		<div id="css-footer">
+　				～フッター内容～
+  		</div>
+	</body>
+	<script th:inline="javascript">
+		/*<![CDATA[*/
+		$(document).ready(function() {
+		alert(/*[[ ${amedasHeader.amedasDatas.get(0).humidityRatio} ]]*/);
+		alert(/*[[ ${amedasHeader.amedasDatas.get(0).getHumidityRatio()} ]]*/);
+		var plots = [];
+ 		var amedasDatas = /*[[ ${amedasHeader.amedasDatas} ]]*/;
+		for (var amedasData in amedasDatas ){
+ 			alert(amedasData.humidityRatio);
+			plots.push([50,50,'A']);
+  		}
+		$.jqplot(
+			'jqPlot-sample',
+			[
+				plots
+			],
+			{
+				seriesDefaults: {
+					color: '#7dffc7',
+					showLine: false,
+					markerOptions: {
+						size: 16
+					},
+					pointLabels: {
+						show: true,
+						location: 'n',
+						ypadding: -12,
+					}
+				}
+			}
+		);
+	} );
+	/*]]>*/
+</script>
+</html>
