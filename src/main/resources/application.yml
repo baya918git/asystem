@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/weather # PostgresのIPアドレス/ポート番号/DB名
-    username: postgres                             # Postgresのユーザ名
-    password: postgres                             # Postgresのパスワード
+    url: jdbc:postgresql://iwzcxxirejitlt:170a279a241e6a14c2f916a246c19abd78fc34c29fd91c02a8baf16311a72210@ec2-54-147-209-121.compute-1.amazonaws.com:5432/d7kd1gigdgedu3 # PostgresのIPアドレス/ポート番号/DB名
+    username: iwzcxxirejitlt                             # Postgresのユーザ名
+    password: 170a279a241e6a14c2f916a246c19abd78fc34c29fd91c02a8baf16311a72210                             # Postgresのパスワード
     driver-class-name: org.postgresql.Driver       # PostgresのJDBCドライバ
 
   batch:
